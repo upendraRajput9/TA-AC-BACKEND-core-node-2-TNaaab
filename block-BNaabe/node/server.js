@@ -1,23 +1,24 @@
 var path = require('path');
 console.log(__filename)
-console.log(path.join(__dirname,'./app.js'));
+console.log(__dirname+'/app.js');
 console.log(path.join(__dirname,'./index.html'));
 
 var http = require('http');
 var server = http.createServer(handleRequest);
-
+var qs = require('querystring')
 function handleRequest(req,res){
-let store ="";
-let dataFormat = req.headers['content-type']
+
+
 if(req.method==='POST'&&req.url==='/' ){
+    let store ="";
     req.on('data',(chunk)=>{
         store=store+chunk;
     })
     req.on('end',()=>{
-        if( dataFormat==='applicatin/json'){
-        let parseData= JSON.parse(store);
-        res.end(store);
-        }
+            res.statusCode=201;
+        let parseData= qs.parse(store);
+        res.end(JSON.stringify(parseData));
+        
     })
 }
 }
