@@ -58,8 +58,6 @@ Entire code should look like:
 const userDir = __dirname + "/users/";
 // OR using path module
 // make sure to require path module if using
-const userDir = path.join(__dirname, "users/");
-
 // captured data in stringified JSON format
 var store = "some data here";
 // check for post request coming on '/users'
