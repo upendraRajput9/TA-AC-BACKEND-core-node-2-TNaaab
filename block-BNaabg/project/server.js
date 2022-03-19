@@ -49,7 +49,7 @@ var parsedUrl=url.parse(req.url,true);
             res.end(`${parsedUrl.query.username}.json file deleted!`)
           });
     } else {
-      res.statusCode = 400
+      res.statusCode = 404
       res.end('Page not found')
     }
   })
